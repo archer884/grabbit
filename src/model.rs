@@ -34,6 +34,18 @@ pub enum MediaType {
     Image,
 }
 
+impl PostsResponse {
+    pub fn posts(self) -> impl Iterator<Item = Post> {
+        self.into_iter()
+    }
+}
+
+impl Post {
+    pub fn url(&self) -> Option<&str> {
+        self.media.as_ref().map(|media| media.content.as_ref())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::PostsResponse;

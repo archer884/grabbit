@@ -43,3 +43,15 @@ impl Iterator for PostsIntoIter {
         self.post_ids.next().and_then(|id| self.posts.remove(&id))
     }
 }
+
+impl IntoIterator for PostsResponse {
+    type Item = Post;
+    type IntoIter = PostsIntoIter;
+
+    fn into_iter(self) -> Self::IntoIter {
+        PostsIntoIter {
+            post_ids: self.post_ids.into_iter(),
+            posts: self.posts,
+        }
+    }
+}
