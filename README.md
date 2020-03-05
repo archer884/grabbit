@@ -1,6 +1,7 @@
 # grabbit
 
-> Assistive technology for users of Reddit.
+*Assistive technology for users of Reddit.*
+
 ```
 $ grabbit --help
 grabbit 0.1.0
