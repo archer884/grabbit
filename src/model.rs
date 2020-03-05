@@ -6,7 +6,7 @@ use serde::Deserialize;
 #[derive(Clone, Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PostsResponse {
-    token: String,
+    token: Option<String>,
     post_ids: Vec<String>,
     posts: HashMap<String, Post>,
 }
@@ -18,31 +18,58 @@ pub struct Post {
     title: String,
     author: String,
     media: Option<Media>,
+    source: Option<Source>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Source {
+    display_text: String,
+    url: String,
 }
 
 #[derive(Clone, Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Media {
-    content: String,
+    content: Option<String>,
     #[serde(rename = "type")]
-    media_type: MediaType,
+    pub media_type: MediaType,
 }
 
 #[derive(Copy, Clone, Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub enum MediaType {
+    Embed,
+    #[serde(rename = "gifvideo")]
+    GifVideo,
     Image,
+    /// Rich Text JSON ??!!1? wtfbbq
+    #[serde(rename = "rtjson")]
+    RtJson,
+    Video,
 }
 
 impl PostsResponse {
+    pub fn last_id(&self) -> Option<&String> {
+        self.post_ids.last()
+    }
+
     pub fn posts(self) -> impl Iterator<Item = Post> {
         self.into_iter()
     }
 }
 
 impl Post {
-    pub fn url(&self) -> Option<&str> {
-        self.media.as_ref().map(|media| media.content.as_ref())
+    pub fn media_type(&self) -> Option<MediaType> {
+        Some(self.media.as_ref()?.media_type)
+    }
+    
+    pub fn content(&self) -> Option<&str> {
+        Some(self.media.as_ref()?.content.as_ref()?.as_ref())
+    }
+
+    pub fn source(&self) -> Option<&str> {
+        Some(self.source.as_ref()?.url.as_ref())
     }
 }
 

@@ -4,15 +4,22 @@ mod reddit;
 
 use reqwest::{self, header, Client};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let options::Opt { user } = options::read();
+#[tokio::main]
+async fn main() -> reqwest::Result<()> {
+    let options::Opt { user, verbose } = options::read();
     let client = build_client()?;
 
-    pages(&client, user).visit_pages(|item| {
-        if let Some(url) = item.url() {
-            println!("{}", url);
-        }
-    })?;
+    pages(&client, user)
+        .visit_pages(|item| {
+            if let Some(url) = item.source().or_else(|| item.content()) {
+                println!("{}", url);
+            }
+
+            if verbose {
+                println!("{:#?}", item);
+            }
+        })
+        .await?;
 
     Ok(())
 }

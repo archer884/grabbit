@@ -17,11 +17,9 @@ impl<'client> UserPages<'client> {
         }
     }
 
-    pub fn visit_pages(&mut self, mut f: impl FnMut(Post)) -> reqwest::Result<()> {
-        use futures::executor;
-
+    pub async fn visit_pages(&mut self, mut f: impl FnMut(Post)) -> reqwest::Result<()> {
         loop {
-            let mut page = executor::block_on(self.get_page())?;
+            let mut page = self.get_page().await?;
             if let Some(item) = page.next() {
                 f(item);
                 page.for_each(&mut f);
@@ -40,6 +38,7 @@ impl<'client> UserPages<'client> {
             .json()
             .await?;
 
+        self.last_id = response.last_id().map(Clone::clone);
         Ok(response.posts())
     }
 

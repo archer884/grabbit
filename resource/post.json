@@ -1,0 +1,103 @@
+{
+    "id": "t3_fdik0v",
+    "numComments": 5,
+    "created": 1583351300000,
+    "score": 219,
+    "distinguishType": null,
+    "isLocked": false,
+    "isStickied": false,
+    "thumbnail": {
+        "url": "https://b.thumbs.redditmedia.com/rST6aHRsZJjqmHrkx8upB9PlpVCBBI1_o94dFYVu9lA.jpg",
+        "width": 140,
+        "height": 64
+    },
+    "title": "Rounding the South Island of New Zealand gusting over 100 knot winds",
+    "author": "rain-storms",
+    "authorId": "t2_1m37lcnm",
+    "domain": "i.redd.it",
+    "postId": "t3_fdik0v",
+    "upvoteRatio": null,
+    "numDuplicates": null,
+    "discussionType": null,
+    "viewCount": 0,
+    "goldCount": 0,
+    "isArchived": false,
+    "contestMode": false,
+    "gildings": null,
+    "postCategories": null,
+    "suggestedSort": null,
+    "belongsTo": {
+        "id": "t5_2wvqt",
+        "type": "subreddit"
+    },
+    "flair": [],
+    "hidden": false,
+    "saved": false,
+    "isGildable": false,
+    "isMediaOnly": false,
+    "isSponsored": false,
+    "isNSFW": false,
+    "isMeta": false,
+    "isSpoiler": false,
+    "isBlank": false,
+    "sendReplies": true,
+    "voteState": 0,
+    "permalink": "https://www.reddit.com/r/HeavySeas/comments/fdik0v/rounding_the_south_island_of_new_zealand_gusting/",
+    "events": [],
+    "eventsOnRender": [],
+    "callToAction": null,
+    "domainOverride": null,
+    "media": {
+        "obfuscated": null,
+        "content": "https://i.redd.it/4simkpvsmpk41.jpg",
+        "type": "image",
+        "width": 3852,
+        "height": 1776,
+        "resolutions": [
+            {
+                "url": "https://preview.redd.it/4simkpvsmpk41.jpg?width=108&crop=smart&auto=webp&s=9ee678d783787a08237502505a4fb95394c16552",
+                "width": 108,
+                "height": 49
+            },
+            {
+                "url": "https://preview.redd.it/4simkpvsmpk41.jpg?width=216&crop=smart&auto=webp&s=629a993ddbce05ed1cff3352d5f6ed8d3b5f8958",
+                "width": 216,
+                "height": 99
+            },
+            {
+                "url": "https://preview.redd.it/4simkpvsmpk41.jpg?width=320&crop=smart&auto=webp&s=aa683dea30b83eee8f1999765bd493c5ff4ae4bb",
+                "width": 320,
+                "height": 147
+            },
+            {
+                "url": "https://preview.redd.it/4simkpvsmpk41.jpg?width=640&crop=smart&auto=webp&s=6c7d202aacd35059bfeecb282c3fa0ff410aa4f6",
+                "width": 640,
+                "height": 295
+            },
+            {
+                "url": "https://preview.redd.it/4simkpvsmpk41.jpg?width=960&crop=smart&auto=webp&s=f07808f1209483a5bc5ad4af76785a61bd7edbc5",
+                "width": 960,
+                "height": 442
+            },
+            {
+                "url": "https://preview.redd.it/4simkpvsmpk41.jpg?width=1080&crop=smart&auto=webp&s=e15211561c4ebf1ca797ef98741c7ffb2e475471",
+                "width": 1080,
+                "height": 497
+            }
+        ]
+    },
+    "preview": {
+        "url": "https://preview.redd.it/4simkpvsmpk41.jpg?auto=webp&s=d7fdbeade611bd877a36c106f07d415f45432cd9",
+        "width": 3852,
+        "height": 1776
+    },
+    "crosspostRootId": null,
+    "crosspostParentId": null,
+    "numCrossposts": 0,
+    "isCrosspostable": false,
+    "liveCommentsWebsocket": "wss://ws-06a9d4455a99e86c7.wss.redditmedia.com/link/fdik0v?m=AQAAD6ZhXl6PQA3h7QPy_dsRmHQ-r5d8eteoCC-UmM-5xP9KGK2w",
+    "source": null,
+    "isOriginalContent": false,
+    "contentCategories": null,
+    "isScoreHidden": false
+}
