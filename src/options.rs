@@ -7,7 +7,7 @@ pub struct Opt {
     pub user: String,
 
     /// Print debug information for Post items.
-    #[structopt(short = "V", long = "verbose")]
+    #[structopt(short = "v", long = "verbose")]
     pub verbose: bool,
 }
 
