@@ -30,7 +30,7 @@ impl<'client> UserPages<'client> {
     async fn get_page<'a>(&'a mut self) -> reqwest::Result<PostsResponse> {
         let response: PostsResponse = self
             .client
-            .get(dbg!(&self.get_request()))
+            .get(&self.get_request())
             .send()
             .await?
             .json()
