@@ -117,7 +117,7 @@ impl Post {
         match self.media.as_ref()? {
             Media::Standard(m) => Some(m.media_type),
             Media::Gallery(_) => Some(MediaType::Gallery),
-            Media::Obfuscated(_) => None
+            Media::Obfuscated(_) => None,
         }
     }
 
@@ -156,7 +156,7 @@ fn gallery(media: &GallerySource) -> Option<Items> {
 
     Some(
         items
-            .into_iter()
+            .iter()
             .filter_map(move |item| {
                 types.get(&item.id).map(|x| match x.format.as_ref() {
                     "image/jpg" => format!("https://i.redd.it/{}.jpg", item.id),
