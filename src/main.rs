@@ -6,19 +6,11 @@ use reqwest::{self, header, Client};
 
 #[tokio::main]
 async fn main() -> reqwest::Result<()> {
-    let options::Opt { user, verbose } = options::read();
+    let options::Opt { user } = options::read();
     let client = build_client()?;
 
     pages(&client, user)
-        .visit_pages(|item| {
-            if let Some(url) = item.source().or_else(|| item.content()) {
-                println!("{}", url);
-            }
-
-            if verbose {
-                println!("{:#?}", item);
-            }
-        })
+        .visit_pages(|url| println!("{}", url))
         .await?;
 
     Ok(())
@@ -34,11 +26,11 @@ fn build_client() -> reqwest::Result<Client> {
 
     Client::builder()
         .user_agent(USER_AGENT)
-        .default_headers(build_default_headers())
+        .default_headers(default_headers())
         .build()
 }
 
-fn build_default_headers() -> header::HeaderMap {
+fn default_headers() -> header::HeaderMap {
     static ACCEPT_HEADER: &str =
         "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
     let mut headers = header::HeaderMap::new();
