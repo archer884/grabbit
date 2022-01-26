@@ -2,16 +2,19 @@ mod model;
 mod options;
 mod reddit;
 
-use reqwest::{self, header, Client};
+use reqwest::{self, blocking::Client, header};
 
-#[tokio::main]
-async fn main() -> reqwest::Result<()> {
-    let options::Opt { user } = options::read();
+fn main() {
+    if let Err(e) = run(&options::read()) {
+        eprintln!("{}", e);
+        std::process::exit(1);
+    }
+}
+
+fn run(opts: &options::Options) -> reqwest::Result<()> {
     let client = build_client()?;
 
-    pages(&client, user)
-        .visit_pages(|url| println!("{}", url))
-        .await?;
+    pages(&client, &opts.user).visit_pages(|url| println!("{}", url))?;
 
     Ok(())
 }
@@ -33,6 +36,7 @@ fn build_client() -> reqwest::Result<Client> {
 fn default_headers() -> header::HeaderMap {
     static ACCEPT_HEADER: &str =
         "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+
     let mut headers = header::HeaderMap::new();
     headers.insert(
         header::ACCEPT,

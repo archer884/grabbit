@@ -1,5 +1,6 @@
 use crate::model::PostsResponse;
-use reqwest::Client;
+
+use reqwest::blocking::Client;
 
 #[derive(Clone, Debug)]
 pub struct UserPages<'client> {
@@ -17,9 +18,9 @@ impl<'client> UserPages<'client> {
         }
     }
 
-    pub async fn visit_pages(&mut self, mut f: impl FnMut(&str)) -> reqwest::Result<()> {
+    pub fn visit_pages(&mut self, mut f: impl FnMut(&str)) -> reqwest::Result<()> {
         loop {
-            let page = self.get_page().await?;
+            let page = self.get_page()?;
             if page.posts.is_empty() {
                 return Ok(());
             }
@@ -27,15 +28,8 @@ impl<'client> UserPages<'client> {
         }
     }
 
-    async fn get_page<'a>(&'a mut self) -> reqwest::Result<PostsResponse> {
-        let response: PostsResponse = self
-            .client
-            .get(&self.get_request())
-            .send()
-            .await?
-            .json()
-            .await?;
-
+    fn get_page(&mut self) -> reqwest::Result<PostsResponse> {
+        let response: PostsResponse = self.client.get(&self.get_request()).send()?.json()?;
         self.last_id = response.last_id().map(Clone::clone);
         Ok(response)
     }

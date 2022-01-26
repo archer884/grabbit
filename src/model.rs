@@ -65,7 +65,8 @@ pub struct GallerySource {
 #[derive(Clone, Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ObfuscatedSource {
-    obfuscated: String,
+    // Obfuscated sources may be null in the event of a copyright takedown
+    obfuscated: Option<String>,
 }
 
 #[derive(Copy, Clone, Debug, Deserialize)]
