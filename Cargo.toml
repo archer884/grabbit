@@ -7,11 +7,11 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = { version = "3.0.12", features = ["derive"] }
-hashbrown = { version = "0.12.0", features = ["serde"] }
-reqwest = { version = "0.11.9", features = ["blocking", "json"] }
-serde = { version = "1.0.136", features = ["derive"] }
-smallvec = "1.8.0"
+clap = { version = "4.0.18", features = ["derive", "wrap_help"] }
+hashbrown = { version = "0.12.3", features = ["serde"] }
+reqwest = { version = "0.11.12", features = ["blocking", "json"] }
+serde = { version = "1.0.147", features = ["derive"] }
+smallvec = "1.10.0"
 
 [dev-dependencies]
-serde_json = "1.0.78"
+serde_json = "1.0.87"

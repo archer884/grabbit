@@ -1,17 +1,18 @@
+mod args;
 mod model;
-mod options;
 mod reddit;
 
+use args::Args;
 use reqwest::{self, blocking::Client, header};
 
 fn main() {
-    if let Err(e) = run(&options::read()) {
+    if let Err(e) = run(&args::read()) {
         eprintln!("{}", e);
         std::process::exit(1);
     }
 }
 
-fn run(opts: &options::Options) -> reqwest::Result<()> {
+fn run(opts: &Args) -> reqwest::Result<()> {
     let client = build_client()?;
 
     pages(&client, &opts.user).visit_pages(|url| println!("{}", url))?;
